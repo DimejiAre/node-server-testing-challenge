@@ -1,8 +1,18 @@
 const db = require('../data/dbConfig');
 
 module.exports = {
+    find,
+    findByName,
     insert,
     remove
+}
+
+function find(){
+    return db('gadgets')
+}
+
+function findByName(name){
+    return db('gadgets').where({name: name}).first()
 }
 
 function insert(gadget){
