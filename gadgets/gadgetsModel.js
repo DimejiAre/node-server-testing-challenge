@@ -15,8 +15,10 @@ function findByName(name){
     return db('gadgets').where({name: name}).first()
 }
 
-function insert(gadget){
-    return db('gadgets').insert(gadget)
+async function insert(gadget){
+    let [id] = await db('gadgets').insert(gadget)
+    let result = await db('gadgets').where({id: id})
+    return result
 }
 
 function remove(name){
